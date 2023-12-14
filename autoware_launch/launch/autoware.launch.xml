@@ -54,11 +54,16 @@
   </group>
 
   <!-- Pointcloud container -->
-  <group if="$(var use_pointcloud_container)">
+  <!-- <group if="$(var use_pointcloud_container)">
     <include file="$(find-pkg-share autoware_launch)/launch/pointcloud_container.launch.py">
       <arg name="use_multithread" value="true"/>
       <arg name="container_name" value="$(var pointcloud_container_name)"/>
     </include>
+  </group> -->
+
+  <!-- Control -->
+  <group if="$(var launch_control)">
+    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_control_component.launch.xml"/>
   </group>
 
   <!-- Vehicle -->
@@ -104,11 +109,6 @@
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_planning_component.launch.xml">
       <arg name="module_preset" value="$(var planning_module_preset)"/>
     </include>
-  </group>
-
-  <!-- Control -->
-  <group if="$(var launch_control)">
-    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_control_component.launch.xml"/>
   </group>
 
   <!-- API -->
