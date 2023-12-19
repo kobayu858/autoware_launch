@@ -66,13 +66,6 @@
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_control_component.launch.xml"/>
   </group>
 
-  <!-- Perception -->
-  <group if="$(var launch_perception)">
-    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_perception_component.launch.xml">
-      <arg name="data_path" value="$(var data_path)"/>
-    </include>
-  </group>
-
   <!-- Vehicle -->
   <group if="$(var launch_vehicle)">
     <include file="$(find-pkg-share tier4_vehicle_launch)/launch/vehicle.launch.xml">
@@ -89,6 +82,13 @@
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_system_component.launch.xml"/>
   </group>
 
+  <!-- Perception -->
+  <group if="$(var launch_perception)">
+    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_perception_component.launch.xml">
+      <arg name="data_path" value="$(var data_path)"/>
+    </include>
+  </group>
+
   <!-- Map -->
   <group if="$(var launch_map)">
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_map_component.launch.xml"/>
@@ -103,6 +103,7 @@
   <group if="$(var launch_localization)">
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_localization_component.launch.xml"/>
   </group>
+
 
   <!-- Planning -->
   <group if="$(var launch_planning)">
